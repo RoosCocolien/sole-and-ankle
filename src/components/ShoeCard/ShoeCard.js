@@ -23,6 +23,8 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
       ? 'new-release'
       : 'default'
 
+  const color = variant === 'on-sale' ? 'primary' : 'secondary'
+
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
@@ -38,6 +40,7 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
         </Row>
       </Wrapper>
+      {variant !== 'default' ? <Variant type={color}>{variant}</Variant> : null}
     </Link>
   )
 }
@@ -46,6 +49,18 @@ const Link = styled.a`
   text-decoration: none;
   color: inherit;
   flex: 0 1 300px;
+  position: relative;
+`
+const Variant = styled.div`
+  background-color: ${(props) => (props.type === 'primary' ? COLORS.primary : COLORS.secondary)};
+  color: ${COLORS.white};
+  font-weight: ${WEIGHTS.medium};
+  display: inline;
+  position: absolute;
+  padding: 10px;
+  top: 12px;
+  right: -4px;
+  border-radius: 2px;
 `
 
 const Wrapper = styled.article``
@@ -60,6 +75,8 @@ const Image = styled.img`
 
 const Row = styled.div`
   font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
 `
 
 const Name = styled.h3`
