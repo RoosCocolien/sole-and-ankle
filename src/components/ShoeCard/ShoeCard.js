@@ -56,7 +56,7 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  flex: 0 1 300px;
+  flex: 1 0 300px;
   position: relative;
 `
 const Variant = styled.div`
