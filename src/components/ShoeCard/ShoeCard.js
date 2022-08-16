@@ -5,6 +5,11 @@ import { COLORS, WEIGHTS } from '../../constants'
 import { formatPrice, pluralize, isNewShoe } from '../../utils'
 import Spacer from '../Spacer'
 
+const translate = {
+  'on-sale': 'Sale',
+  'new-release': 'Just released!',
+}
+
 const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfColors }) => {
   // There are 3 variants possible, based on the props:
   //   - new-release
@@ -40,7 +45,7 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
         </Row>
       </Wrapper>
-      {variant !== 'default' ? <Variant type={color}>{variant}</Variant> : null}
+      {variant !== 'default' ? <Variant type={color}>{translate[variant]}</Variant> : null}
     </Link>
   )
 }
